@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 class BankAccountTest {
 
     @Test
@@ -39,7 +42,7 @@ class BankAccountTest {
 
             Deposit deposit = Deposit.deposit(customer, account, 100);
             account.addTransaction(deposit);
-            assert (account.getAccountTransactions() != null);
+            assertFalse(account.getAccountTransactions().isEmpty());
 
             System.out.println("It works!");
         } catch (Exception e) {

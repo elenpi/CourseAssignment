@@ -5,7 +5,7 @@ public class Deposit extends Transaction {
     public Deposit(Customer customer) {
 
         super(customer);
-        this.transcactionType = "Deposit";
+        this.transactionType = "Deposit";
     }
 
     //===============Methods===================//
@@ -17,7 +17,7 @@ public class Deposit extends Transaction {
         int newBalance = balance + amount;
         account.setAccountBalance(newBalance);
 
-        System.out.println("You deposit " + amount + "$ in your " + account.getAccountNumber() + " acount. Your new balance is " + newBalance + "$.");
+        System.out.println("You deposit " + amount + "$ in your " + account.getAccountNumber() + " account. Your new balance is " + newBalance + "$.");
 
         Deposit deposit = new Deposit(customer);
         account.addTransaction(deposit);
@@ -30,7 +30,7 @@ public class Deposit extends Transaction {
         return "Withdrawal{" +
                 "date=" + this.date +
                 ", customer=" + customer.getCustomerName() +
-                ", transcactionType='" + transcactionType + '\'' +
+                ", transcactionType='" + transactionType + '\'' +
                 '}';
     }
 

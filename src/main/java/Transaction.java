@@ -6,7 +6,7 @@ public class Transaction {
     //===============Instance Variable===================//
 
     protected LocalDate date;
-    protected String transcactionType;
+    protected String transactionType;
     protected Customer customer;
 
     //===============Constructors===================//
@@ -14,7 +14,7 @@ public class Transaction {
     public Transaction(Customer customer) {
 
         this.date = LocalDate.now();
-        this.transcactionType = transcactionType;
+        this.transactionType = transactionType;
         this.customer = customer;
     }
 
@@ -26,8 +26,8 @@ public class Transaction {
     }
 
     // Get the type of the transaction
-    public String getTranscactionType() {
-        return transcactionType;
+    public String getTransactionType() {
+        return transactionType;
     }
 
     // Get the customer who made the transaction

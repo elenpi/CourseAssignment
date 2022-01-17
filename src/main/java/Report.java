@@ -12,7 +12,6 @@ public class Report {
         System.out.println("Customers Report:");
         System.out.println("=================");
 
-        int counter = 0;
         String customerName = null;
         int customerAFM = 0;
 
@@ -23,7 +22,6 @@ public class Report {
             for (BankAccount account : listAccounts) {
                 if (account.getHolders().contains(customer)) {
                     accounts.add(account.getAccountNumber());
-                    counter++;
                 }
             }
 
@@ -84,7 +82,7 @@ public class Report {
             Customer customer = transaction.getCustomer();
             String name = customer.getCustomerName();
 
-            System.out.println("+ Transaction Type: " + transaction.getTranscactionType() + "; Preformed by: " + name + "; Date: " + transaction.getDate());
+            System.out.println("+ Transaction Type: " + transaction.getTransactionType() + "; Preformed by: " + name + "; Date: " + transaction.getDate());
         }
     }
 

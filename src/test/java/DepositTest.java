@@ -13,10 +13,10 @@ class DepositTest {
         try {
             Deposit deposit = Deposit.deposit(customer, account, 100);
             Assertions.assertInstanceOf(Deposit.class, deposit);
-            System.out.println("Deposit was successfull!");
+            System.out.println("Deposit was successful!");
         } catch (Exception e) {
 
-            System.out.println("Error: Deposit was unsuccessfull.");
+            System.out.println("Error: Deposit was unsuccessful.");
         }
     }
 }

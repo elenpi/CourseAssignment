@@ -5,7 +5,7 @@ public class Withdrawal extends Transaction {
     public Withdrawal(Customer customer) {
 
         super(customer);
-        this.transcactionType = "Withdraw";
+        this.transactionType = "Withdraw";
     }
 
     //===============Methods===================//
@@ -35,7 +35,7 @@ public class Withdrawal extends Transaction {
         return "Withdrawal{" +
                 "date=" + this.date +
                 ", customer=" + customer.getCustomerName() +
-                ", transcactionType='" + this.transcactionType + '\'' +
+                ", transcactionType='" + this.transactionType + '\'' +
                 '}';
     }
 }

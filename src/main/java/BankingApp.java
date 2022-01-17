@@ -41,6 +41,9 @@ public class BankingApp {
         allBankAccounts.add(account3);
         allBankAccounts.add(account4);
 
+        // Adding a second account holder
+        account1.addHolder(customer2);
+
         //===============Menu===================//
 
         System.out.println(" ");
