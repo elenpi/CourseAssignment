@@ -135,7 +135,8 @@ public class Menu {
                 System.out.println("Please enter the amount you want to withdraw: ");
                 int amountWithdraw = Integer.valueOf(scanner.nextLine());
                 try {
-                    Withdrawal.withdraw(customer, account, amountWithdraw);
+                    Withdrawal withdraw = new Withdrawal(customer);
+                    withdraw.transaction(account, amountWithdraw, null);
 
                 } catch (ErrorException e) {
                     System.out.println(e.getMessage());
@@ -144,7 +145,8 @@ public class Menu {
             case 2:
                 System.out.println("Please enter the amount you want to deposit: ");
                 int amountDeposit = Integer.valueOf(scanner.nextLine());
-                Deposit.deposit(customer, account, amountDeposit);
+                Deposit deposit = new Deposit(customer);
+                deposit.transaction(account, amountDeposit,null);
                 break;
             case 3:
                 System.out.println("Please select the account to which you want to transfer the money.");
@@ -177,7 +179,8 @@ public class Menu {
                 int amountTransfer = Integer.valueOf(scanner.nextLine());
 
                 try {
-                    Transfer.transfer(amountTransfer, customer, account, toAccount);
+                    Transfer transfer = new Transfer(customer);
+                    transfer.transaction(account, amountTransfer, toAccount);
                 } catch (ErrorException e) {
 
                     System.out.println(e.getMessage());
@@ -192,7 +195,8 @@ public class Menu {
 
                 System.out.println("Please write a memo:");
                 String memo = scanner.nextLine();
-                Check.draftCheck(customer, account, amount, recipient, memo);
+                Check check = new Check(customer, account, amount, recipient, memo);
+                check.draftCheck();
             default:
                 System.out.println("Goodbye!");
                 break;

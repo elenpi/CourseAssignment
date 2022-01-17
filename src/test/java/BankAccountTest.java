@@ -40,8 +40,8 @@ class BankAccountTest {
             BankAccount account = new BankAccount(12344578, 0);
             Customer customer = new Customer("Testing Master", 987654);
 
-            Deposit deposit = Deposit.deposit(customer, account, 100);
-            account.addTransaction(deposit);
+            Deposit deposit = new Deposit(customer);
+            deposit.transaction(account, 100, null);
             assertFalse(account.getAccountTransactions().isEmpty());
 
             System.out.println("It works!");

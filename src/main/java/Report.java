@@ -12,6 +12,7 @@ public class Report {
         System.out.println("Customers Report:");
         System.out.println("=================");
 
+        int counter = 0;
         String customerName = null;
         int customerAFM = 0;
 
@@ -22,6 +23,7 @@ public class Report {
             for (BankAccount account : listAccounts) {
                 if (account.getHolders().contains(customer)) {
                     accounts.add(account.getAccountNumber());
+                    counter++;
                 }
             }
 
@@ -63,7 +65,7 @@ public class Report {
             date = account.getAccountDate();
             balance = account.getAccountBalance();
             if (names.size() > 1) {
-                System.out.println("+ Account Number: " + accNumber + "; Opening Date: " + date + "; Holders: " + names.get(0) + " ; " + names.get(1) + "; Current Balance: " + balance);
+                System.out.println("+ Account Number: " + accNumber + "; Opening Date: " + date + "; Holders: " + names.get(0) + " , " + names.get(1) + "; Current Balance: " + balance);
             } else {
                 System.out.println("+ Account Number: " + accNumber + "; Opening Date: " + date + "; Holder: " + names.get(0) + "; Current Balance: " + balance);
 

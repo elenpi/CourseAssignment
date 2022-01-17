@@ -22,15 +22,15 @@ public class Check {
     //===============Methods===================//
 
     // Draft a check to a recipient
-    public static Check draftCheck(Customer customer, BankAccount fromAccount, int amount, String recipient, String memo) {
+    public void draftCheck() {
 
-        Check check = new Check(customer, fromAccount, amount, recipient, memo);
-        int fromAccountBalance = fromAccount.getAccountBalance();
-        fromAccount.setAccountBalance(fromAccountBalance);
+        if (accountNumber.getAccountBalance() > amount) {
+            accountNumber.deductBalance(this.amount);
 
-        System.out.println(customer.getCustomerName() + ", you have drafted a check from your account " + fromAccount.getAccountNumber() + " for the amout of " + amount + "$ to " + recipient + " with reason : " + memo);
-
-        return check;
+            System.out.println(customer.getCustomerName() + ", you have drafted a check from your account " + accountNumber.getAccountNumber() + " for the amout of " + amount + "$ to " + recipient + " with reason : " + memo);
+        } else {
+            System.out.println("Insufficient funds.");
+        }
     }
 
     @Override

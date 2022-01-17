@@ -71,6 +71,14 @@ public class BankAccount {
 
     }
 
+    public void addBalance(int amount){
+        this.accountBalance = accountBalance + amount;
+    }
+
+    public void deductBalance(int amount){
+        this.accountBalance = accountBalance - amount;
+    }
+
     // Method to add a transaction to a list
     public void addTransaction(Transaction transaction) {
 

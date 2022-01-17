@@ -1,30 +1,51 @@
-public class Withdrawal extends Transaction {
+import java.time.LocalDate;
+
+public class Withdrawal implements Transaction {
+
+    private Customer customer;
+    private String transactionType;
+    private LocalDate date;
+
 
     //===============Constructors===================//
 
     public Withdrawal(Customer customer) {
 
-        super(customer);
+        this.customer = customer;
         this.transactionType = "Withdraw";
+        this.date = LocalDate.now();
     }
 
     //===============Methods===================//
 
+    @Override
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    @Override
+    public LocalDate getDate() {
+        return date;
+    }
+
+    @Override
+    public String getTransactionType() {
+        return transactionType;
+    }
+
     // Withdraw money from account
-    public static Withdrawal withdraw(Customer customer, BankAccount account, int amount) throws ErrorException {
+    @Override
+    public void transaction( BankAccount account, int amount, BankAccount toAccount) throws ErrorException {
 
         if (account.getAccountBalance() > amount) {
-            int newBalance = account.getAccountBalance() - amount;
-            account.setAccountBalance(newBalance);
-            System.out.println("You have successfully withdraw " + amount + ". Your new account balance is: " + newBalance + "$.");
-
+            account.deductBalance(amount);
+            System.out.println("You have successfully withdraw " + amount + ". Your new account balance is: " + account.getAccountBalance() + "$.");
             Withdrawal withdrawal = new Withdrawal(customer);
             account.addTransaction(withdrawal);
-            return withdrawal;
+            account.addTransaction(this);
 
         } else {
             System.out.println("You account balance doesn't have sufficient funds.");
-            Withdrawal nonWithdrawal = null;
 
             throw new ErrorException("Error: The amount you entered exceeds your account balance.");
         }

@@ -11,8 +11,9 @@ class DepositTest {
         BankAccount account = new BankAccount(12345678, 100);
 
         try {
-            Deposit deposit = Deposit.deposit(customer, account, 100);
-            Assertions.assertInstanceOf(Deposit.class, deposit);
+            Deposit deposit = new Deposit(customer);
+            deposit.transaction(account, 100, null);
+            assert (account.getAccountBalance() == 200);
             System.out.println("Deposit was successful!");
         } catch (Exception e) {
 

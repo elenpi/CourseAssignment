@@ -76,7 +76,8 @@ public class BankingApp {
         System.out.println("==============Check==================");
         System.out.println("");
 
-        Check.draftCheck(customer1, account1, 100, "Ken Lee", "Pay rent");
+        Check check = new Check(customer3, account3, 100, "Jane Yu", "Pay Rent");
+        check.draftCheck();
 
         //===============Withdraw===================//
 
@@ -85,8 +86,9 @@ public class BankingApp {
         System.out.println(" ");
 
         // Make a withdraw
+        Withdrawal withdrawal = new Withdrawal(customer2);
         try {
-            Withdrawal.withdraw(customer2, account2, 100000);
+            withdrawal.transaction(account2, 100000,null);
         } catch (ErrorException e) {
             System.out.println(e.getMessage());
         }
@@ -98,7 +100,8 @@ public class BankingApp {
         System.out.println("");
 
         // Make a deposit
-        Deposit.deposit(customer1, account1, 100);
+        Deposit deposit = new Deposit(customer1);
+        deposit.transaction(account1, 100,null);
 
         //===============Transfer===================//
 
@@ -107,8 +110,9 @@ public class BankingApp {
         System.out.println("");
 
         // Make a transfer
+        Transfer transfer = new Transfer(customer1);
         try {
-            Transfer transfer = Transfer.transfer(10, customer1, account1, account3);
+            transfer.transaction(account1,1000, account3);
         } catch (ErrorException e) {
             System.out.println(e.getMessage());
         }
@@ -129,6 +133,10 @@ public class BankingApp {
 
         // Print a report with the transaction history of a specific account
         Report.printTransactionsReport(account1);
+
+        Report.printTransactionsReport(account2);
+
+        Report.printTransactionsReport(newBankAccount);
 
     }
 }

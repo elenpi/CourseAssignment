@@ -14,8 +14,9 @@ class TransferTest {
         toAccount.addHolder(customer);
 
         try {
-            Transfer transfer = Transfer.transfer(100, customer, fromAccount, toAccount);
-            Assertions.assertInstanceOf(Transfer.class, transfer);
+            Transfer transfer = new Transfer(customer);
+                    transfer.transaction(fromAccount, 100, toAccount);
+            assert(fromAccount.getAccountBalance() == 900);
         } catch (Exception e) {
             System.out.println("Error: Transfer failed.");
         }

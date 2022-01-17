@@ -1,39 +1,16 @@
 import java.time.LocalDate;
-import java.lang.String;
 
-public class Transaction {
+public interface Transaction {
+    //
 
-    //===============Instance Variable===================//
+    Customer getCustomer();
 
-    protected LocalDate date;
-    protected String transactionType;
-    protected Customer customer;
+    LocalDate getDate();
 
-    //===============Constructors===================//
+    String getTransactionType();
 
-    public Transaction(Customer customer) {
-
-        this.date = LocalDate.now();
-        this.transactionType = transactionType;
-        this.customer = customer;
-    }
-
-    //===============Methods===================//
-
-    // Get the date of when the transaction took place
-    public LocalDate getDate() {
-        return date;
-    }
-
-    // Get the type of the transaction
-    public String getTransactionType() {
-        return transactionType;
-    }
-
-    // Get the customer who made the transaction
-    public Customer getCustomer() {
-        return customer;
-    }
+    // Perform transaction
+    void transaction(BankAccount account, int amount, BankAccount toAccount) throws ErrorException;
 
 }
 
