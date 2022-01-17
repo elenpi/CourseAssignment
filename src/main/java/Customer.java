@@ -35,46 +35,11 @@ public class Customer {
     }
 
     //Method to create a new customer
-    public static Customer registerCustomer(List<Customer> list) {
+    public static Customer registration(String name, int afm, List<Customer> list) {
 
-        Scanner scanner = new Scanner(System.in);
-
-        String name = null;
-        int afm=0;
-        Customer customer = null;
-
-        System.out.println("Welcome to ABC Bank!");
-        System.out.println("To register as a new customer, please enter your first and last name:");
-
-        while (true) {
-
-            for (Customer c : list) {
-                int counter=0;
-                name = scanner.nextLine();
-
-                if (name.equalsIgnoreCase(c.getCustomerName()) && counter < 3) {
-                    System.out.println("The name you have entered is already in use. Please type a different one:");
-                    counter++;
-                } else
-                    break;
-            }
-
-            System.out.println("Now please enter your Tax Registration Number:");
-
-            for (Customer c : list) {
-                afm = Integer.valueOf(scanner.nextLine());
-
-                int counter = 0;
-                if (afm == c.getCustomerAFM() && counter <4) {
-                    System.out.println("The Tax Registry Number you have entered is already in use. Please type a different one:");
-                    counter++;
-                } else
-                    break;
-            }
-            customer = new Customer(name, afm);
-            System.out.println("Welcome to ABC Bank " + customer.getCustomerName() + "! " + "Your registration was successfull.");
-            return customer;
-        }
+        Customer customer = new Customer(name, afm);
+        System.out.println("Welcome to ABC Bank " + customer.getCustomerName() + "! " + "Your registration was successfull.");
+        return customer;
     }
 
 

@@ -32,18 +32,9 @@ class BankAccountTest {
     @Test
     void createAccount() {
 
-        List<Customer> allCustomers =  new ArrayList<>();
-
-        Customer customer = new Customer("Testing Master", 987654);
-        Customer customer2 = new Customer("Testing Guru", 1234567);
-        allCustomers.add(customer);
-        allCustomers.add(customer2);
-
-        ByteArrayInputStream in = new ByteArrayInputStream("Testing Guru".getBytes());
-        System.setIn(in);
-
-        BankAccount account1 = BankAccount.createAccount(allCustomers);
+        BankAccount account1 = BankAccount.createAccount();
         Assertions.assertInstanceOf(BankAccount.class, account1);
+        System.out.println("Account was created successfully");
 
     }
 

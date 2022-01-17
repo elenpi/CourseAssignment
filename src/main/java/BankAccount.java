@@ -41,28 +41,17 @@ public class BankAccount {
         this.holders.add(holder);
     }
 
-    public static BankAccount createAccount(List<Customer> list) {
+    public static BankAccount createAccount() {
 
-        Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
-
-        System.out.println("Since you are an existing customer, to open a new account, please enter you fisrt and last name.");
-        String input = scanner.nextLine();
 
         int randomNumber = new Random().nextInt(900000) + 100000;
 
-        for (Customer customer : list)
-            if (Objects.equals(customer.getCustomerName(), input)) {
+        BankAccount account = new BankAccount(randomNumber, 0);
 
-                BankAccount account = new BankAccount(randomNumber, 0);
+        return account;
 
-                System.out.println(input + ", you have successfully opened a new account " + account.getAccountNumber() + " and your current balance is " + account.getAccountBalance());
 
-                return account;
-            }
-        System.out.println("Unfortunately, to open a new account you have to be an existing customer. Goodbye!");
-
-        return null;
     }
 
 

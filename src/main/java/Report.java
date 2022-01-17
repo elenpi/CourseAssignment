@@ -33,9 +33,9 @@ public class Report {
             customerAFM = customer.getCustomerAFM();
 
             if (accounts.size() == 1) {
-                System.out.println("+ Customer Name: " + customerName + ", AFM: " + customerAFM + ", Account m" + accounts.get(0));
+                System.out.println("+ Customer Name: " + customerName + "; AFM: " + customerAFM + "; Account m" + accounts.get(0));
             } else {
-                System.out.print("+ Customer Name: " + customerName + ", AFM: " + customerAFM + ", Accounts: ");
+                System.out.print("+ Customer Name: " + customerName + "; AFM: " + customerAFM + "; Accounts: ");
                 for (int i = 0; i < accounts.size(); i++) {
                     System.out.print(accounts.get(i) + " ");
                 }
@@ -66,9 +66,9 @@ public class Report {
             date = account.getAccountDate();
             balance = account.getAccountBalance();
             if (names.size() > 1) {
-                System.out.println("+ Account Number: " + accNumber + ", Opening Date: " + date + ", Holders: " + names.get(0) + " , " + names.get(1) + ", Current Balance: " + balance);
+                System.out.println("+ Account Number: " + accNumber + "; Opening Date: " + date + "; Holders: " + names.get(0) + " ; " + names.get(1) + "; Current Balance: " + balance);
             } else {
-                System.out.println("+ Account Number: " + accNumber + ", Opening Date: " + date + ", Holder: " + names.get(0) + ", Current Balance: " + balance);
+                System.out.println("+ Account Number: " + accNumber + "; Opening Date: " + date + "; Holder: " + names.get(0) + "; Current Balance: " + balance);
 
             }
 
@@ -85,7 +85,7 @@ public class Report {
             Customer customer = transaction.getCustomer();
             String name = customer.getCustomerName();
 
-            System.out.println("+ Transaction Type: " + transaction.getTranscactionType() + ", Preformed by: " + name + ", Date: " + transaction.getDate());
+            System.out.println("+ Transaction Type: " + transaction.getTranscactionType() + "; Preformed by: " + name + "; Date: " + transaction.getDate());
         }
     }
 

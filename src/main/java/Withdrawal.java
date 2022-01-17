@@ -19,7 +19,7 @@ public class Withdrawal extends Transaction {
             System.out.println("You have successfully withdraw " + amount + ". Your new account balance is: " + newBalance + "$.");
 
             Withdrawal withdrawal = new Withdrawal(customer);
-            account.addTransaction(withdrawal);
+
         } else {
             System.out.println("You account balance doesn't have sufficient funds.");
             Withdrawal nonWithdrawal = null;
