@@ -20,9 +20,10 @@ public class BankingApp {
         Customer customer3 = new Customer("Jane Doe", 98765432);
         allCustomer.add(customer3);
 
-        // Register a New Customer and add him/her to the list of all Customers
-        // Customer newCustomer = Customer.registration("Tim Brown", 82307451, allCustomer);
-        // allCustomer.add(newCustomer);
+        Customer customer4 = new Customer("Tim Brown", 82307451);
+        allCustomer.add(customer4);
+
+
 
         //===============Create Account===================//
 
@@ -34,40 +35,48 @@ public class BankingApp {
         List<BankAccount> allBankAccounts = new ArrayList<>();
 
         //Create a new bank account
-        BankAccount account1 = new BankAccount(10987654, 0);
-        BankAccount account2 = new BankAccount(20123456, 1000);
+        BankAccount account1 = new BankAccount(10987654, 1000);
+        BankAccount account2 = new BankAccount(20123456, 0);
         BankAccount account3 = new BankAccount(30564738, 5000);
-        //BankAccount account4 = BankAccount.createAccount();
+        BankAccount account4 = BankAccount.createAccount();
 
         // Adding existing customers to accounts
         account1.addHolder(customer1);
         account1.addHolder(customer2);
         account2.addHolder(customer2);
         account3.addHolder(customer1);
-        //account4.addHolder(newCustomer);
+        account4.addHolder(customer4);
 
         // Adding account to the list of all accounts
         allBankAccounts.add(account1);
         allBankAccounts.add(account2);
         allBankAccounts.add(account3);
-        //allBankAccounts.add(account4);
+        allBankAccounts.add(account4);
 
         //===============Menu===================//
 
         System.out.println(" ");
-        System.out.println("===============Menu=================");
+        System.out.println("===============Welcome to ABC Bank=================");
         System.out.println(" ");
 
+
         // Register a customer
-        Menu.registerNewCustomer(allCustomer);
+        Customer newCustomer = Menu.registerNewCustomer(allCustomer);
+
+        System.out.println(" ");
+        System.out.println("===============Create Account=================");
+        System.out.println(" ");
 
         // Open an account
-        Menu.createNewAccount(allCustomer, allBankAccounts);
+        BankAccount newBankAccount = Menu.createNewAccount(allCustomer, allBankAccounts);
+        newBankAccount.addHolder(newCustomer);
 
+        System.out.println(" ");
+        System.out.println("===============Select Transaction=================");
+        System.out.println(" ");
 
         // Perform a transaction
-        Menu.selectTransaction(customer2, account1,allBankAccounts);
-
+        Menu.selectTransaction(customer2, account1 ,allBankAccounts);
 
         //===============Check===================//
 
@@ -75,7 +84,7 @@ public class BankingApp {
         System.out.println("==============Check==================");
         System.out.println("");
 
-        Check check1 = Check.draftCheck(customer1, account3);
+        //Check check1 = Check.draftCheck(customer1, account3);
 
         //===============Withdraw===================//
 
@@ -85,7 +94,7 @@ public class BankingApp {
 
         // Make a withdraw
         try {
-            Withdrawal withdraw = Withdrawal.withdraw(customer2, account2, 100);
+            Withdrawal withdraw = Withdrawal.withdraw(customer2, account2, 100000);
         } catch (ErrorException e) {
             System.out.println(e.getMessage());
         }

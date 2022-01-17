@@ -22,7 +22,6 @@ public class BankAccount {
         this.holders = new ArrayList<>();
     }
 
-
     //===============Methods===================//
 
 

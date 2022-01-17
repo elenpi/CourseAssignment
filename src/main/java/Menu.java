@@ -27,7 +27,7 @@ public class Menu {
     }
 
     // Register a new customer
-    public static void registerNewCustomer(List<Customer> listCustomers) {
+    public static Customer registerNewCustomer(List<Customer> listCustomers) {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -39,7 +39,7 @@ public class Menu {
 
         System.out.println("To register as a new customer, please enter your first and last name:");
 
-        while (isTrue) {
+        while (true) {
 
             if (counter >= 2) {
                 System.out.println("Sorry, you have reached your tries limit. Goodbye!");
@@ -64,10 +64,11 @@ public class Menu {
 
             Customer newCustomer = Customer.registration(name, afm, listCustomers);
             listCustomers.add(newCustomer);
+            return newCustomer;
 
-            System.out.println("Welcome to ABC Bank " + newCustomer.getCustomerName() + "! " + "Your registration was successfull.");
-           isTrue = false;
+            //isTrue = false;
         }
+        return null;
     }
 
     // Open a new account
@@ -84,11 +85,13 @@ public class Menu {
 
         if (isNameRegistered(input, listCustomers)) {
             newAccount = new BankAccount(randomNumber, 0);
-            System.out.println(input + " you have successfully created a new account with Account Number: " + randomNumber + " and Balance: " + newAccount.getAccountBalance());
             listAccounts.add(newAccount);
-        }
-        System.out.println("Unfortunately, to open a new account you have to be an existing customer. Please register first. Goodbye!");
 
+            System.out.println(input + " you have successfully created a new account with Account Number: " + randomNumber + " and Balance: " + newAccount.getAccountBalance());
+            return newAccount;
+        } else {
+            System.out.println("Unfortunately, to open a new account you have to be an existing customer. Please register first. Goodbye!");
+        }
         return null;
     }
 
