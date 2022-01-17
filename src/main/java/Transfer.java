@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 public class Transfer extends Transaction {
 
     //===============Constructors===================//

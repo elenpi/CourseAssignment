@@ -24,7 +24,6 @@ public class BankingApp {
         allCustomer.add(customer4);
 
 
-
         //===============Create Account===================//
 
 //        System.out.println(" ");
@@ -76,11 +75,11 @@ public class BankingApp {
         System.out.println(" ");
 
         // Perform a transaction
-        Menu.selectTransaction(customer2, account1 ,allBankAccounts);
+        Menu.selectTransaction(customer2, account1, allBankAccounts);
 
         //===============Check===================//
 
-        Check.draftCheck(customer1,account1,100, "Ken Lee", "Pay rent");
+        Check.draftCheck(customer1, account1, 100, "Ken Lee", "Pay rent");
 
         System.out.println("");
         System.out.println("==============Check==================");

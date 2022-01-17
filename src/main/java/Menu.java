@@ -167,7 +167,7 @@ public class Menu {
 
                 System.out.println("Please write a memo:");
                 String memo = scanner.nextLine();
-                Check.draftCheck(customer,account,amount,recipient, memo);
+                Check.draftCheck(customer, account, amount, recipient, memo);
 
             default:
                 System.out.println("Goodbye!");

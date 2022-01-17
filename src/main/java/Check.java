@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Check {
 
     //===============Instance Variable===================//
@@ -31,7 +29,7 @@ public class Check {
         fromAccount.setAccountBalance(fromAccountBalance);
 
 
-        System.out.println( customer.getCustomerName() + ", you have drafted a check from your account " + fromAccount.getAccountNumber() + " for the amout of " + amount + "$ to " + recipient + " with reason : " + memo);
+        System.out.println(customer.getCustomerName() + ", you have drafted a check from your account " + fromAccount.getAccountNumber() + " for the amout of " + amount + "$ to " + recipient + " with reason : " + memo);
 
         return check;
     }

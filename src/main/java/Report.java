@@ -2,7 +2,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Report {
 
     //===============Methods===================//
@@ -44,7 +43,7 @@ public class Report {
         }
     }
 
-    // Print a report with all the bank acounts and their details
+    // Print a report with all the bank accounts and their details
     public static void printBankAccountReport(List<BankAccount> list, List<Customer> listCustomers) {
         int accNumber = 0;
         LocalDate date = null;

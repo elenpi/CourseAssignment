@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WithdrawalTest {
 
-
     @Test
         // Test Case #1: Happy Path
     void withdraw() {
