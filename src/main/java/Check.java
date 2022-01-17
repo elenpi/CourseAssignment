@@ -24,18 +24,12 @@ public class Check {
     //===============Methods===================//
 
     // Draft a check to a recipient
-    public static Check draftCheck(Customer customer, BankAccount fromAccount) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter recipients name:");
-        String recipient = scanner.nextLine();
-
-        System.out.println("Please enter the amount:");
-        int amount = Integer.valueOf(scanner.nextLine());
-
-        System.out.println("Please write a memo:");
-        String memo = scanner.nextLine();
+    public static Check draftCheck(Customer customer, BankAccount fromAccount, int amount, String recipient, String memo) {
 
         Check check = new Check(customer, fromAccount, amount, recipient, memo);
+        int fromAccountBalance = fromAccount.getAccountBalance();
+        fromAccount.setAccountBalance(fromAccountBalance);
+
 
         System.out.println( customer.getCustomerName() + ", you have drafted a check from your account " + fromAccount.getAccountNumber() + " for the amout of " + amount + "$ to " + recipient + " with reason : " + memo);
 

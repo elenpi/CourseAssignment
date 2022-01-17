@@ -80,6 +80,8 @@ public class BankingApp {
 
         //===============Check===================//
 
+        Check.draftCheck(customer1,account1,100, "Ken Lee", "Pay rent");
+
         System.out.println("");
         System.out.println("==============Check==================");
         System.out.println("");

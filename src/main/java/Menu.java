@@ -105,6 +105,7 @@ public class Menu {
         System.out.println("To withdraw money from an account enter: 1");
         System.out.println("To deposit money to an account enter: 2");
         System.out.println("To transfer money between your accounts enter: 3");
+        System.out.println("To transfer money between your accounts enter: 4");
 
         int input = Integer.valueOf(scanner.nextLine());
 
@@ -157,6 +158,17 @@ public class Menu {
                     System.out.println(e.getMessage());
                 }
                 break;
+            case 4:
+                System.out.println("Please enter recipients name:");
+                String recipient = scanner.nextLine();
+
+                System.out.println("Please enter the amount:");
+                int amount = Integer.valueOf(scanner.nextLine());
+
+                System.out.println("Please write a memo:");
+                String memo = scanner.nextLine();
+                Check.draftCheck(customer,account,amount,recipient, memo);
+
             default:
                 System.out.println("Goodbye!");
                 break;
