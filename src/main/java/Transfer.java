@@ -41,7 +41,7 @@ public class Transfer extends Transaction {
         return "Withdrawal{" +
                 "date=" + this.date +
                 ", customer=" + customer.getCustomerName() +
-                ", transcactionType='" + this.transactionType + '\'' +
+                ", transactionType='" + this.transactionType + '\'' +
                 '}';
     }
 

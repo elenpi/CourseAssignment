@@ -30,7 +30,7 @@ public class Deposit extends Transaction {
         return "Withdrawal{" +
                 "date=" + this.date +
                 ", customer=" + customer.getCustomerName() +
-                ", transcactionType='" + transactionType + '\'' +
+                ", transactionType='" + transactionType + '\'' +
                 '}';
     }
 

@@ -126,7 +126,7 @@ public class Menu {
         System.out.println("To withdraw money from an account enter: 1");
         System.out.println("To deposit money to an account enter: 2");
         System.out.println("To transfer money between your accounts enter: 3");
-        System.out.println("To transfer money between your accounts enter: 4");
+        System.out.println("To draft a check to another person: 4");
 
         int input = Integer.valueOf(scanner.nextLine());
 
