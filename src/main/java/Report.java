@@ -33,7 +33,7 @@ public class Report {
             customerAFM = customer.getCustomerAFM();
 
             if (accounts.size() == 1) {
-                System.out.println("+ Customer Name: " + customerName + "; AFM: " + customerAFM + "; Account m" + accounts.get(0));
+                System.out.println("+ Customer Name: " + customerName + "; AFM: " + customerAFM + "; Account " + accounts.get(0));
             } else {
                 System.out.print("+ Customer Name: " + customerName + "; AFM: " + customerAFM + "; Accounts: ");
                 for (int i = 0; i < accounts.size(); i++) {

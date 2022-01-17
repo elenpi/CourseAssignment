@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Transfer extends Transaction {
 
     //===============Constructors===================//
@@ -5,7 +7,7 @@ public class Transfer extends Transaction {
     public Transfer(Customer customer) {
 
         super(customer);
-        this.transcactionType = "Transfrer";
+        this.transcactionType = "Transfer";
 
     }
 
@@ -17,8 +19,11 @@ public class Transfer extends Transaction {
         if (fromAccount.getHolders().contains(customer)) {
             int fromAccountBalance = fromAccount.getAccountBalance();
             int toAccountBalance = toAccount.getAccountBalance() + amount;
+
             System.out.println(amount + "$ were transferred to your account. Your new balance is " + toAccountBalance + "$.");
+
             fromAccountBalance = fromAccountBalance - amount;
+
             toAccount.setAccountBalance(toAccountBalance);
             fromAccount.setAccountBalance(fromAccountBalance);
 

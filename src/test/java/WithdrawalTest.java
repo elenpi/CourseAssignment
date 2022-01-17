@@ -14,8 +14,8 @@ class WithdrawalTest {
         BankAccount account = new BankAccount(12345678, 100);
 
         try {
-            Withdrawal.withdraw(customer, account, 10);
-            Assertions.assertInstanceOf(Customer.class, customer);
+            Withdrawal withdrawal = Withdrawal.withdraw(customer, account, 10);
+            Assertions.assertInstanceOf(Withdrawal.class, withdrawal);
             System.out.println("Withdrawal was successfull!");
 
         } catch (ErrorException e) {
@@ -33,7 +33,7 @@ class WithdrawalTest {
             assertEquals(expectedOutcome, Withdrawal.withdraw(customer, account, 10000));
         } catch (Exception e) {
 
-            System.out.println("Test Case Failed: Deposit was successfull.");
+            System.out.println("Error: Insufficient balance.");
         }
     }
 }
