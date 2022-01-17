@@ -9,7 +9,7 @@ class CustomerTest {
     void registration() {
        try { List<Customer> allCustomers = new ArrayList<>();
 
-            Customer newCustomer = Customer.registration("Testing Guru", 12345678, allCustomers);
+            Customer newCustomer = Customer.registerCustomer("Testing Guru", 12345678);
             allCustomers.add(newCustomer);
 
             Assertions.assertInstanceOf(Customer.class, newCustomer);

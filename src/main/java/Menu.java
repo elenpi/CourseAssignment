@@ -62,7 +62,7 @@ public class Menu {
                 break;
             }
 
-            Customer newCustomer = Customer.registration(name, afm, listCustomers);
+            Customer newCustomer = Customer.registerCustomer(name, afm);
             listCustomers.add(newCustomer);
             return newCustomer;
 

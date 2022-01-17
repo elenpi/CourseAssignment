@@ -37,7 +37,7 @@ public class BankingApp {
         BankAccount account1 = new BankAccount(10987654, 1000);
         BankAccount account2 = new BankAccount(20123456, 0);
         BankAccount account3 = new BankAccount(30564738, 5000);
-        BankAccount account4 = BankAccount.createAccount();
+        BankAccount account4 = BankAccount.openAccount();
 
         // Adding existing customers to accounts
         account1.addHolder(customer1);

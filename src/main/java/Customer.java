@@ -34,7 +34,7 @@ public class Customer {
     }
 
     //Method to create a new customer
-    public static Customer registration(String name, int afm, List<Customer> list) {
+    public static Customer registerCustomer(String name, int afm) {
 
         Customer customer = new Customer(name, afm);
         System.out.println("Welcome to ABC Bank " + customer.getCustomerName() + "! " + "Your registration was successfull.");

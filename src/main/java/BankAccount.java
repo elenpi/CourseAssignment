@@ -40,7 +40,7 @@ public class BankAccount {
         this.holders.add(holder);
     }
 
-    public static BankAccount createAccount() {
+    public static BankAccount openAccount() {
 
         Random rand = new Random();
 
@@ -50,9 +50,7 @@ public class BankAccount {
 
         return account;
 
-
     }
-
 
     // Method to add a transaction to a list
     public void addTransaction(Transaction transaction) {

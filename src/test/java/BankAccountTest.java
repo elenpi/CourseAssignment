@@ -25,7 +25,7 @@ class BankAccountTest {
     @Test
     void createAccount() {
 
-        BankAccount account1 = BankAccount.createAccount();
+        BankAccount account1 = BankAccount.openAccount();
         Assertions.assertInstanceOf(BankAccount.class, account1);
         System.out.println("Account was created successfully");
 
