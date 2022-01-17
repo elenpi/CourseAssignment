@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Customer {
 
     //===============Instance Variable===================//
@@ -40,7 +38,6 @@ public class Customer {
         System.out.println("Welcome to ABC Bank " + customer.getCustomerName() + "! " + "Your registration was successfull.");
         return customer;
     }
-
 
     @Override
     public String toString() {

@@ -22,6 +22,25 @@ public class BankAccount {
         this.holders = new ArrayList<>();
     }
 
+    public BankAccount(int accountNumber, int accountBalance, List<Customer> holders) {
+
+        this.accountNumber = accountNumber;
+        this.accountDate = LocalDate.now();
+        this.accountBalance = accountBalance;
+        this.accountTransactions = new ArrayList<>();
+        this.holders = holders;
+    }
+
+    public BankAccount(int accountNumber, int accountBalance, Customer holder) {
+
+        this.accountNumber = accountNumber;
+        this.accountDate = LocalDate.now();
+        this.accountBalance = accountBalance;
+        this.accountTransactions = new ArrayList<>();
+        this.holders = new ArrayList<>();
+        this.holders.add(holder);
+    }
+
     //===============Methods===================//
 
 

@@ -26,6 +26,18 @@ public class Menu {
         return false;
     }
 
+    // Method to search for an existing customer by name
+    public static Customer lookUpCustomer(String name, List<Customer> listCustomers) {
+
+        for (Customer c : listCustomers) {
+            if (name.equalsIgnoreCase(c.getCustomerName())) {
+                return c;
+            }
+        }
+
+        return null;
+    }
+
     // Register a new customer
     public static Customer registerNewCustomer(List<Customer> listCustomers) {
 
@@ -33,42 +45,50 @@ public class Menu {
 
         String name = null;
         int afm = 0;
-        Customer customer = null;
         int counter = 0;
-        boolean isTrue = true;
 
         System.out.println("To register as a new customer, please enter your first and last name:");
 
-        while (true) {
+        while (counter < 2) {
 
-            if (counter >= 2) {
-                System.out.println("Sorry, you have reached your tries limit. Goodbye!");
-                break;
-            }
             name = scanner.nextLine();
 
             if (isNameRegistered(name, listCustomers)) {
                 System.out.println("You have entered an already registered name. Please try a different one:");
                 counter++;
+                name = null;
                 continue;
             }
+            break;
+        }
+        if (name == null) {
+            System.out.println("Sorry, you have reached your tries limit. Goodbye!");
+            return null;
+        }
 
+        counter = 0;
+
+        while (counter < 2) {
             System.out.println("Now please enter your Tax Registration Number:");
             afm = Integer.valueOf(scanner.nextLine());
 
             if (isAfmRegistered(afm, listCustomers)) {
                 System.out.println("The Tax Registry Number you have entered is already in use. Please type a different one:");
                 counter++;
-                break;
+                afm = 0;
+                continue;
             }
-
-            Customer newCustomer = Customer.registerCustomer(name, afm);
-            listCustomers.add(newCustomer);
-            return newCustomer;
-
-            //isTrue = false;
+            break;
         }
-        return null;
+        if (afm == 0) {
+            System.out.println("Sorry, you have reached your tries limit. Goodbye!");
+            return null;
+        }
+
+        Customer newCustomer = Customer.registerCustomer(name, afm);
+        listCustomers.add(newCustomer);
+        return newCustomer;
+
     }
 
     // Open a new account
@@ -78,13 +98,15 @@ public class Menu {
         Random rand = new Random();
         BankAccount newAccount = null;
 
-        System.out.println("Since you are an existing customer, to open a new account, please enter you first and last name.");
+        System.out.println("Since you are an existing customer, to open a new account, please enter you first and last name: ");
         String input = scanner.nextLine();
+
+        Customer customer = Menu.lookUpCustomer(input, listCustomers);
 
         int randomNumber = new Random().nextInt(900000) + 100000;
 
-        if (isNameRegistered(input, listCustomers)) {
-            newAccount = new BankAccount(randomNumber, 0);
+        if (customer != null) {
+            newAccount = new BankAccount(randomNumber, 0, customer);
             listAccounts.add(newAccount);
 
             System.out.println(input + " you have successfully created a new account with Account Number: " + randomNumber + " and Balance: " + newAccount.getAccountBalance());
@@ -96,7 +118,6 @@ public class Menu {
     }
 
     // Select a transaction from a menu
-
     public static void selectTransaction(Customer customer, BankAccount account, List<BankAccount> listAccounts) {
 
         Scanner scanner = new Scanner(System.in);
@@ -135,10 +156,14 @@ public class Menu {
                         accountNumbers.add(acc.getAccountNumber());
                         System.out.println("To " + acc.getAccountNumber() + ": Enter " + counter);
                         counter++;
-                    } else if (accountNumbers.isEmpty()) {
-                        System.out.println("One account found. You can only make transfer between your accounts.");
                     }
                 }
+
+                if (accountNumbers.isEmpty()) {
+                    System.out.println("One account found. You can only make transfer between your accounts.");
+                    System.exit(0);
+                }
+
                 int selecetAccount = Integer.valueOf(scanner.nextLine());
 
                 BankAccount toAccount = null;

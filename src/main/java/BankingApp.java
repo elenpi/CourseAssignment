@@ -26,22 +26,14 @@ public class BankingApp {
 
         //===============Create Account===================//
 
-
         // Create a list for all bank accounts
         List<BankAccount> allBankAccounts = new ArrayList<>();
 
         //Create a new bank account
-        BankAccount account1 = new BankAccount(10987654, 1000);
-        BankAccount account2 = new BankAccount(20123456, 0);
-        BankAccount account3 = new BankAccount(30564738, 5000);
-        BankAccount account4 = BankAccount.openAccount();
-
-        // Adding existing customers to accounts
-        account1.addHolder(customer1);
-        account1.addHolder(customer2);
-        account2.addHolder(customer2);
-        account3.addHolder(customer1);
-        account4.addHolder(customer4);
+        BankAccount account1 = new BankAccount(10987654, 1000, customer1);
+        BankAccount account2 = new BankAccount(20123456, 0, customer2);
+        BankAccount account3 = new BankAccount(30564738, 5000, customer3);
+        BankAccount account4 = new BankAccount(10203040, 10000, customer4);
 
         // Adding account to the list of all accounts
         allBankAccounts.add(account1);
@@ -65,14 +57,15 @@ public class BankingApp {
 
         // Open an account
         BankAccount newBankAccount = Menu.createNewAccount(allCustomer, allBankAccounts);
-        newBankAccount.addHolder(newCustomer);
+        BankAccount dummyNewCustomerSecondAccount = new BankAccount(7639081, 10000, newCustomer);
+        allBankAccounts.add(dummyNewCustomerSecondAccount);
 
         System.out.println(" ");
         System.out.println("===============Select Transaction=================");
         System.out.println(" ");
 
         // Perform a transaction
-        Menu.selectTransaction(customer2, account1, allBankAccounts);
+        Menu.selectTransaction(newCustomer, newBankAccount, allBankAccounts);
 
         //===============Check===================//
 
