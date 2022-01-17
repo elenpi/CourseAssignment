@@ -1,7 +1,5 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class BankAccount {
 
@@ -12,11 +10,10 @@ public class BankAccount {
     private List<Customer> holders;
     private int accountBalance;
     private List<Transaction> accountTransactions;
-//    private HashMap<String,int> accountTransactions;
 
     //===============Constructors===================//
 
-    public BankAccount(int accountNumber, int accountBalance){
+    public BankAccount(int accountNumber, int accountBalance) {
 
         this.accountNumber = accountNumber;
         this.accountDate = LocalDate.now();
@@ -25,7 +22,14 @@ public class BankAccount {
         this.holders = new ArrayList<>();
     }
 
+
     //===============Methods===================//
+
+
+    // Method to add the date of account's opening
+    public LocalDate getAccountDate() {
+        return accountDate;
+    }
 
     // Method to add a customer holder to an account
     public void addHolder(Customer holder) {
@@ -33,11 +37,34 @@ public class BankAccount {
         if (this.holders.size() == 2) {
             System.out.println("The account has reached the limit of maximum account holders");
             return;
-
         }
-
         this.holders.add(holder);
     }
+
+    public static BankAccount createAccount(List<Customer> list) {
+
+        Scanner scanner = new Scanner(System.in);
+        Random rand = new Random();
+
+        System.out.println("Since you are an existing customer, to open a new account, please enter you fisrt and last name.");
+        String input = scanner.nextLine();
+
+        int randomNumber = new Random().nextInt(900000) + 100000;
+
+        for (Customer customer : list)
+            if (Objects.equals(customer.getCustomerName(), input)) {
+
+                BankAccount account = new BankAccount(randomNumber, 0);
+
+                System.out.println(input + ", you have successfully opened a new account " + account.getAccountNumber() + " and your current balance is " + account.getAccountBalance());
+
+                return account;
+            }
+        System.out.println("Unfortunately, to open a new account you have to be an existing customer. Goodbye!");
+
+        return null;
+    }
+
 
     // Method to add a transaction to a list
     public void addTransaction(Transaction transaction) {
@@ -45,7 +72,11 @@ public class BankAccount {
         this.accountTransactions.add(transaction);
     }
 
-    // Method to add get the account transactions
+    public void addAccount() {
+
+    }
+
+    // Method to get the account transactions
     public List<Transaction> getAccountTransactions() {
         return accountTransactions;
     }
@@ -70,9 +101,6 @@ public class BankAccount {
         this.accountBalance = accountBalance;
     }
 
-
-
-
     @Override
     public String toString() {
         return "BankAccount{" +
@@ -84,4 +112,3 @@ public class BankAccount {
                 '}';
     }
 }
-

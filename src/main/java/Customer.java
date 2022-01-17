@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Scanner;
 
 public class Customer {
 
@@ -6,7 +7,6 @@ public class Customer {
 
     private String customerName;
     private int customerAFM;
-    private List<Customer> allCustomers;
 
     //===============Constructors===================//
 
@@ -17,6 +17,12 @@ public class Customer {
     }
 
     //===============Methods===================//
+
+    //Method to get customer's afm
+    public int getCustomerAFM() {
+        return customerAFM;
+    }
+
 
     //Method to get customer's name
     public String getCustomerName() {
@@ -29,19 +35,48 @@ public class Customer {
     }
 
     //Method to create a new customer
-    public static Customer createCustomer(String name, int afm) {
+    public static Customer registerCustomer(List<Customer> list) {
 
-        Customer customer = new Customer(name, afm);
-        return customer;
+        Scanner scanner = new Scanner(System.in);
 
+        String name = null;
+        int afm=0;
+        Customer customer = null;
+
+        System.out.println("Welcome to ABC Bank!");
+        System.out.println("To register as a new customer, please enter your first and last name:");
+
+        while (true) {
+
+            for (Customer c : list) {
+                int counter=0;
+                name = scanner.nextLine();
+
+                if (name.equalsIgnoreCase(c.getCustomerName()) && counter < 3) {
+                    System.out.println("The name you have entered is already in use. Please type a different one:");
+                    counter++;
+                } else
+                    break;
+            }
+
+            System.out.println("Now please enter your Tax Registration Number:");
+
+            for (Customer c : list) {
+                afm = Integer.valueOf(scanner.nextLine());
+
+                int counter = 0;
+                if (afm == c.getCustomerAFM() && counter <4) {
+                    System.out.println("The Tax Registry Number you have entered is already in use. Please type a different one:");
+                    counter++;
+                } else
+                    break;
+            }
+            customer = new Customer(name, afm);
+            System.out.println("Welcome to ABC Bank " + customer.getCustomerName() + "! " + "Your registration was successfull.");
+            return customer;
+        }
     }
 
-    //Method to add a new customer to the list of all customers
-//    public void addCustomer(Customer customer) {
-//
-//        this.allCustomers.add(customer);
-//
-//    }
 
     @Override
     public String toString() {
@@ -51,10 +86,5 @@ public class Customer {
                 '}';
     }
 
-    //
-//    public Check draftCheck () {
-//
-//        Check newCheck = new Check()
-//    }
 
 }

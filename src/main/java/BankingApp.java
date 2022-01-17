@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class BankingApp {
 
@@ -6,70 +7,117 @@ public class BankingApp {
 
         //===============Register a New Customer===================//
 
-        Customer papadopoulosI = new Customer("Ioannis Papadopoulos", 123456);
+        // Create a list for all customers
+        List<Customer> allCustomer = new ArrayList<>();
 
-        Customer pippaN = new Customer("Nefeli Pippa", 56789);
+        // Existing Customers
+        Customer customer1 = new Customer("John Doe", 10203040);
+        allCustomer.add(customer1);
 
-        Customer doeJ = Customer.createCustomer("John Doe", 890874);
+        Customer customer2 = new Customer("Jane Smith", 10305070);
+        allCustomer.add(customer2);
 
-        System.out.println(doeJ.toString());
+        // Register a New Customer and add him/her to the list of all Customers
+        Customer newCustomer = Customer.registerCustomer(allCustomer);
+        allCustomer.add(newCustomer);
 
-        //===============Open a New Bank Account===================//
 
-        BankAccount account1 = new BankAccount(12345,400);
-        account1.addHolder(papadopoulosI);
-        account1.addHolder(pippaN);
+        //===============Create Account===================//
 
-        BankAccount account3 = new BankAccount(12334567, 1000);
-        account3.addHolder(pippaN);
+        System.out.println(" ");
+        System.out.println("===============Create Account=================");
+        System.out.println(" ");
 
-        System.out.println(account1.toString());
+        // Create a list for all bank accounts
+        List<BankAccount> allBankAccounts = new ArrayList<>();
 
+        //Create a new bank account
+        BankAccount account1 = new BankAccount(10987654, 0);
+        BankAccount account2 = new BankAccount(20123456, 1000);
+        BankAccount account3 = new BankAccount(30564738, 5000);
+        BankAccount account4 = BankAccount.createAccount(allCustomer);
+
+        // Adding existing customers to accounts
+        account1.addHolder(customer1);
+        account1.addHolder(customer2);
+        account2.addHolder(customer2);
+        account3.addHolder(customer1);
+        account4.addHolder(newCustomer);
+
+        // Adding account to the list of all accounts
+        allBankAccounts.add(account1);
+        allBankAccounts.add(account2);
+        allBankAccounts.add(account3);
+        allBankAccounts.add(account4);
+
+        //===============Select Transaction===================//
+
+        System.out.println(" ");
+        System.out.println("===============Select Transaction=================");
+        System.out.println(" ");
+
+        // Select a transaction from a menu
+        Transaction.selectTransaction(customer2, account1, allBankAccounts);
+
+        //===============Check===================//
+
+        System.out.println("");
+        System.out.println("==============Check==================");
+        System.out.println("");
+
+        Check check1 = Check.draftCheck(newCustomer, account3);
 
         //===============Withdraw===================//
-        int amount = 100;
-        Withdrawal withdrawal = new Withdrawal(papadopoulosI);
-        withdrawal.withdraw(account1, amount);
-        System.out.println(withdrawal);
-        account1.addTransaction(withdrawal);
-        System.out.println(account1.getAccountTransactions());
-        System.out.println(account1);
 
-        amount = 50;
-        Withdrawal withdrawalN = new Withdrawal(pippaN);
-        withdrawalN.withdraw(account1, amount);
-        account1.addTransaction(withdrawalN);
+        System.out.println(" ");
+        System.out.println("===============Withdraw=================");
+        System.out.println(" ");
 
-
-        //===============Withdraw===================//
-
-//        BankAccount account2 = new BankAccount(67891,100122);
-//
-//
-//        Check check1 = new Check(account1,account1,100,"Nefeli Pippa","Pay rent");
-//        System.out.println(check1.toString());
+        // Make a withdraw
+        try {
+            Withdrawal withdraw = Withdrawal.withdraw(customer2, account2, 100);
+        } catch (ErrorException e) {
+            System.out.println(e.getMessage());
+        }
 
         //===============Deposit===================//
 
-        amount = 20;
-        Deposit deposit = new Deposit(papadopoulosI);
-        deposit.deposit(account1, amount);
-        account1.addTransaction(deposit);
+        System.out.println("");
+        System.out.println("==============Deposit==================");
+        System.out.println("");
+
+        // Make a deposit
+        Deposit deposit = Deposit.deposit(newCustomer, account1, 100);
 
         //===============Transfer===================//
 
-        amount = 10;
-        Transfer transfer = new Transfer(papadopoulosI);
-        transfer.transfer(amount, account1, account3);
-        account1.addTransaction(transfer);
+        System.out.println("");
+        System.out.println("==============Transfer==================");
+        System.out.println("");
 
+        // Make a transfer
+        try {
+            Transfer transfer = Transfer.transfer(10, newCustomer, account1, account3);
+        } catch (ErrorException e) {
+            System.out.println(e.getMessage());
+        }
+
+        //===============Reports===================//
+
+        System.out.println("");
+        System.out.println("==============Reports==================");
+        System.out.println("");
+
+        // Print a report with all registered customers
+        Report.printCustomers(allCustomer, allBankAccounts);
+        System.out.println(" ");
+
+        // Print a report with all accounts
+        Report.printBankAccountReport(allBankAccounts, allCustomer);
+        System.out.println(" ");
+
+        // Print a report with the transaction history of a specific account
+        Report.printTransactionsReport(account1);
 
     }
-
-//    private static void withdraw(Customer customer, BankAccount bankAccount, int amount) {
-//
-//        Withdrawal withdrawal = new Withdrawal(customer);
-//        withdrawal.transaction(bankAccount, amount);
-
-
 }
