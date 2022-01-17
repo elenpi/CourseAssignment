@@ -26,9 +26,6 @@ public class BankingApp {
 
         //===============Create Account===================//
 
-//        System.out.println(" ");
-//        System.out.println("===============Create Account=================");
-//        System.out.println(" ");
 
         // Create a list for all bank accounts
         List<BankAccount> allBankAccounts = new ArrayList<>();
@@ -79,13 +76,11 @@ public class BankingApp {
 
         //===============Check===================//
 
-        Check.draftCheck(customer1, account1, 100, "Ken Lee", "Pay rent");
-
         System.out.println("");
         System.out.println("==============Check==================");
         System.out.println("");
 
-        //Check check1 = Check.draftCheck(customer1, account3);
+        Check.draftCheck(customer1, account1, 100, "Ken Lee", "Pay rent");
 
         //===============Withdraw===================//
 
@@ -95,7 +90,7 @@ public class BankingApp {
 
         // Make a withdraw
         try {
-            Withdrawal withdraw = Withdrawal.withdraw(customer2, account2, 100000);
+            Withdrawal.withdraw(customer2, account2, 100000);
         } catch (ErrorException e) {
             System.out.println(e.getMessage());
         }
@@ -107,7 +102,7 @@ public class BankingApp {
         System.out.println("");
 
         // Make a deposit
-        Deposit deposit = Deposit.deposit(customer1, account1, 100);
+        Deposit.deposit(customer1, account1, 100);
 
         //===============Transfer===================//
 

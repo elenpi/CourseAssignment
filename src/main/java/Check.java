@@ -28,7 +28,6 @@ public class Check {
         int fromAccountBalance = fromAccount.getAccountBalance();
         fromAccount.setAccountBalance(fromAccountBalance);
 
-
         System.out.println(customer.getCustomerName() + ", you have drafted a check from your account " + fromAccount.getAccountNumber() + " for the amout of " + amount + "$ to " + recipient + " with reason : " + memo);
 
         return check;
